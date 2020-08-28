@@ -27,14 +27,3 @@ steps:
    deploymentid=$(echo $(grep -oP '"deploymentId"\s*:\s*\K\d+' /tmp/deploymentid.json))
    echo "##vso[task.setvariable variable=deploymentid;]$deploymentid"
   displayName: 'Get Latest Deployment ID'
-- task: InvokeRESTAPI@1
-  displayName: 'Invoke REST API: POST'
-  inputs:
-    serviceConnection: status
-    headers: |
-     {
-     "Content-Type":"application/json", 
-     "Accept":"application/json"
-     }
-    urlSuffix: '$(deploymentid)/status'
-    successCriteria: 'eq(root[''deploymentState''], ''complete'')'
