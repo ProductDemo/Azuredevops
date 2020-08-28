@@ -50,3 +50,24 @@ stages:
               }
           }
         waitForCompletion: 'false'
+  - job: Deploy
+    pool: server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '20'
+  - job: Deploy
+    pool: server
+    steps:
+    - task: InvokeRESTAPI@1
+      inputs:
+        connectionType: 'connectedServiceName'
+        serviceConnection: 'status'
+        method: 'GET'
+        headers: |
+          {
+          "Content-Type":"application/json", 
+          "Accept":"application/json"
+          }
+        urlSuffix: '194351/status'
+        waitForCompletion: 'false'
