@@ -59,7 +59,8 @@ stages:
 - stage: Verify_Status
   jobs:
   - job: Status
-    pool: server
+    pool:
+     vmImage: 'ubuntu-16.04'
     steps:
     - task: Bash@3
       inputs:
@@ -68,8 +69,9 @@ stages:
           curl -i -u FLyHmy44t8qnHckeenzx: -H "Content-Type:application/json" -H "Accept:application/json" -X GET -v http://182.76.197.43:3000/ProductDemo/assemblies/Java/transition/environments/prod/releases/bom -o /tmp/deploymentid.json
           deploymentid=$(echo $(grep -oP '"deploymentId"\s*:\s*\K\d+' /tmp/deploymentid.json))
           echo "##vso[task.setvariable variable=deploymentid;]$deploymentid"
-  - job: Status
-    pool: server
+  - job: echo
+    pool:
+     vmImage: 'ubuntu-16.04'
     steps:
     - task: Bash@3
       inputs:
