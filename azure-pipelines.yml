@@ -9,7 +9,16 @@ stages:
 - stage: B
   jobs:
   - job: A
-    pool:
-     vmImage: 'ubuntu-16.04'
+    pool: server
     steps:
-    - bash: echo "B"
+    - task: InvokeRESTAPI@1
+      inputs:
+        connectionType: 'connectedServiceName'
+        serviceConnection: 'QA-1 Commit'
+        method: 'POST'
+        headers: |
+          {
+          "Content-Type":"application/json", 
+          "Accept":"application/json"
+          }
+        waitForCompletion: 'false'
