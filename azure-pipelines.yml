@@ -14,3 +14,9 @@ stages:
           "Content-Type":"application/json", 
           "Accept":"application/json"
         waitForCompletion: 'false'
+- stage: Verify_Release_State
+  jobs:
+  - job: Verify_Release_State
+    pool: server
+    steps:
+    
