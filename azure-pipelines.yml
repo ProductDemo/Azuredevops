@@ -56,6 +56,8 @@ stages:
     - task: Delay@1
       inputs:
         delayForMinutes: '1'
+- stage: Verify Status
+  jobs:
   - job: Status
     pool: server
     steps:
