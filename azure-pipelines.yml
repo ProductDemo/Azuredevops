@@ -19,4 +19,15 @@ stages:
   - job: Verify_Release_State
     pool: server
     steps:
-    
+    - task: InvokeRESTAPI@1
+      inputs:
+        connectionType: 'connectedServiceName'
+        serviceConnection: 'QA-1 Get Latest Release Bom ID'
+        method: 'GET'
+        headers: |
+          {
+          "Content-Type":"application/json", 
+          "Accept":"application/json"
+          }
+        waitForCompletion: 'false'
+        successCriteria: 'eq(root[''releaseState''], ''open'')'
