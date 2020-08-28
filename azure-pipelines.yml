@@ -1,6 +1,8 @@
-jobs:
-- job: A
-  pool:
-   vmImage: 'ubuntu-16.04'
-  steps:
-  - bash: echo "A"
+stages:
+- stage: A
+  jobs:
+  - job: A
+    pool:
+     vmImage: 'ubuntu-16.04'
+    steps:
+    - bash: echo "A"
