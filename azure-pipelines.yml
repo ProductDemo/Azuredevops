@@ -28,4 +28,4 @@ stages:
           "Accept":"application/json"
           }
         waitForCompletion: 'false'
-        successCriteria: 'eq(root[''releaseState''], ''disabled'')'
+        successCriteria: 'eq(root[''releaseState''], ''open'')'
