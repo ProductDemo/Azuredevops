@@ -6,7 +6,7 @@
 trigger:
 - master
 jobs:
- job: Trigger Deployment
+ job: Trigger
 
 pool:
   vmImage: 'ubuntu-latest'
