@@ -14,8 +14,6 @@ stages:
           "Content-Type":"application/json", 
           "Accept":"application/json"
         waitForCompletion: 'false'
-- stage: Verify_Release_State
-  jobs:
   - job: Verify_Release_State
     pool: server
     steps:
@@ -30,4 +28,4 @@ stages:
           "Accept":"application/json"
           }
         waitForCompletion: 'false'
-        successCriteria: 'eq(root[''releaseState''], ''open'')'
+        successCriteria: 'eq(root[''releaseState''], ''disabled'')'
