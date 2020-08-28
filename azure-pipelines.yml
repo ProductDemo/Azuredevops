@@ -29,7 +29,7 @@ stages:
           }
         waitForCompletion: 'false'
         successCriteria: 'eq(root[''releaseState''], ''open'')'
-  - job: Verify_Release_State
+  - job: Deploy
     pool: server
     steps:
     - task: InvokeRESTAPI@1
