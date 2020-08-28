@@ -6,7 +6,7 @@ stages:
      vmImage: 'ubuntu-16.04'
     steps:
     - bash: echo "A"
-- stage: Verify Release State
+- stage: Verify_Release_State
   jobs:
   - job: A
     pool: server
