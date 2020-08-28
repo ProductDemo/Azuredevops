@@ -29,3 +29,24 @@ stages:
           }
         waitForCompletion: 'false'
         successCriteria: 'eq(root[''releaseState''], ''open'')'
+  - job: Verify_Release_State
+    pool: server
+    steps:
+    - task: InvokeRESTAPI@1
+      inputs:
+        connectionType: 'connectedServiceName'
+        serviceConnection: 'QA-1 Trigger Deployment'
+        method: 'POST'
+        headers: |
+          {
+          "Content-Type":"application/json", 
+          "Accept":"application/json"
+          }
+        body: |
+          {
+              "cms_deployment": {
+                  "releaseId": "",
+                  "nsPath": "/ProductDemo/Java/qa-1/bom"
+              }
+          }
+        waitForCompletion: 'false'
