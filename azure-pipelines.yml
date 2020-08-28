@@ -1,12 +1,12 @@
 stages:
-- stage: A
+- stage: Print
   jobs:
   - job: A
     pool:
      vmImage: 'ubuntu-16.04'
     steps:
     - bash: echo "A"
-- stage: B
+- stage: Verify Release State
   jobs:
   - job: A
     pool: server
@@ -14,11 +14,12 @@ stages:
     - task: InvokeRESTAPI@1
       inputs:
         connectionType: 'connectedServiceName'
-        serviceConnection: 'QA-1 Commit'
-        method: 'POST'
+        serviceConnection: 'QA-1 Get Latest Release Bom ID'
+        method: 'GET'
         headers: |
           {
           "Content-Type":"application/json", 
           "Accept":"application/json"
           }
         waitForCompletion: 'false'
+        successCriteria: 'eq(root[''releaseState''], ''closed'')'
