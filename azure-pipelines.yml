@@ -50,12 +50,12 @@ stages:
               }
           }
         waitForCompletion: 'false'
-  - job: Deploy
+  - job: Delay
     pool: server
     steps:
     - task: Delay@1
       inputs:
-        delayForMinutes: '20'
+        delayForMinutes: '1'
   - job: Status
     pool: server
     steps:
